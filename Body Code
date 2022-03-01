@@ -1,0 +1,140 @@
+import java.util.Scanner;
+
+public class Account {
+	
+	int balance;
+	int lastTransaction;
+	String customerName;
+	String customerID;
+	
+	
+	Account(String cname, String cid) {
+		customerName = cname;
+		customerID = cid;
+	}
+	
+	
+	void deposit(int amount) {
+		if (amount != 0) {
+			balance = balance + amount;
+			lastTransaction = amount;
+			System.out.println("=====================");
+			System.out.println("Deposided $" +amount);
+			System.out.println("=====================");
+		}
+	}
+	
+	
+	void withdraw(int amount) {
+		if (balance > 0) {
+			balance = balance - amount;
+			lastTransaction = -amount;
+			System.out.println("=====================");
+			System.out.println("Withdrawn $" +amount);
+			System.out.println("=====================");
+		}
+		else {
+		 System.out.println("=====================");
+		 System.out.println("Insufficient Funds");
+		 System.out.println("=====================");
+		}
+	}
+	
+	
+	void getlastTransaction() {
+		if (lastTransaction > 0) {
+			System.out.println("Deposited $" + lastTransaction);
+		} else if (lastTransaction < 0) {
+			System.out.println("Withdrawn $" + Math.abs(lastTransaction));
+		} else {
+			System.out.println("No transaction occurred");
+		}
+	}
+	
+
+	void calculateInterest(int years) {
+		double interestRate = .0185;
+		double newBalance = (balance * interestRate * years) + balance;
+		System.out.println("The current interest rate is " + (100 * interestRate) + "%");
+		System.out.println("After " + years + " years, you balance will be: " + newBalance);
+	}
+	
+	void showMenu() {
+		char option = '\0';
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Hello, " + customerName + "!");
+		System.out.println("Account #" + customerID);
+		System.out.println();
+		System.out.println("What would you like to do?");
+		
+		 String showMenu = ("\n" 
+		            + "A. Check your balance\n" 
+		            + "B. Make a deposit\n"
+		            + "C. Make a withdrawal\n" 
+		            + "D. Apply interest\n"
+		            + "E. View most recent transaction\n" 
+		            + "F. Home Page\n"
+		            + "G. Logout");
+		 System.out.println(showMenu);
+		 
+		 do {
+				System.out.println();
+				System.out.println("Enter an option: ");
+				char option1 = scanner.next().charAt(0);
+				option = Character.toUpperCase(option1);
+				System.out.println();
+				
+				switch(option) {
+				
+				case 'A':
+					System.out.println("====================================");
+					System.out.println("$" + balance);
+					System.out.println("====================================");
+					System.out.println();
+					break;
+				
+				case 'B':
+					System.out.println("Enter an amount to deposit:");
+					int amount = scanner.nextInt();
+					deposit(amount);
+					System.out.println();
+					break;
+				
+				case 'C':
+					System.out.println("Enter an amount to withdraw:");
+					int amount2 = scanner.nextInt();
+					withdraw(amount2);
+					System.out.println();
+					break;
+				
+				case 'D':
+					System.out.println("Enter how many years of accrued interest: ");
+					int years = scanner.nextInt();
+					calculateInterest(years);
+					break;
+				
+				case 'E':
+					System.out.println("====================================");
+					getlastTransaction();
+					System.out.println("====================================");
+					System.out.println();
+					break;
+				
+				case 'F':
+					System.out.println(showMenu);
+					break;
+					
+				case 'G':
+					System.out.println("====================================");
+					break;
+				
+				default:
+					System.out.println("Error: invalid option. Please enter A, B, C, D, or E or access services.");
+					break;
+				}
+			} while(option != 'G');
+			System.out.println("Thank you for banking with us!");
+		}
+		
+	}
