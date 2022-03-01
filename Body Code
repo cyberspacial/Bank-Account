@@ -122,6 +122,7 @@ public class Account {
 					break;
 				
 				case 'F':
+				        System.out.println("====================================");
 					System.out.println(showMenu);
 					break;
 					
