@@ -130,11 +130,11 @@ public class Account {
 					break;
 				
 				default:
-					System.out.println("Error: invalid option. Please enter A, B, C, D, or E or access services.");
+					System.out.println("Error: invalid entry");
 					break;
 				}
 			} while(option != 'G');
-			System.out.println("Thank you for banking with us!");
+			System.out.println("Thank you for choosing National Bank!");
 		}
 		
 	}
