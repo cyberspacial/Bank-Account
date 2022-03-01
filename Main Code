@@ -1,0 +1,11 @@
+public class NationalBank {
+
+	public static void main(String[] args) {
+		
+		Account john = new Account("John Smith", "A0001");
+		john.showMenu();
+		
+		
+	}
+
+}
