@@ -4,13 +4,13 @@ public class Account {
 	
 	int balance;
 	int lastTransaction;
-	String customerName;
-	String customerID;
+	String userName;
+	String accountID;
 	
 	
-	Account(String cname, String cid) {
-		customerName = cname;
-		customerID = cid;
+	Account(String uname, String aid) {
+		userName = uname;
+		accountID = aid;
 	}
 	
 	
@@ -63,8 +63,8 @@ public class Account {
 		char option = '\0';
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("Hello, " + customerName + "!");
-		System.out.println("Account #" + customerID);
+		System.out.println("Hello, " + userName + "!");
+		System.out.println("Account #" + accountID);
 		System.out.println();
 		System.out.println("What would you like to do?");
 		
